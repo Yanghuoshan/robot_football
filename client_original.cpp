@@ -63,6 +63,19 @@ int kickWait = 0;
 int turnToSeeGoal = 0;
 int iSide = 0;//1:left;2:right
 
+class person
+	{
+	public:
+		coord curCoord;
+		double abs_dir;
+		person(double x=0.0,double y=0.0,double a_d=0.0):curCoord(x,y)
+		{
+			abs_dir=a_d;
+		}
+	};
+
+person myself;
+
 class coord//×ø±êÀà
 {
     public:
@@ -532,7 +545,7 @@ void Client::init_pos()
     myself.curCoord.y=initpos[iPlayerId-1].y;
     myself.abs_dir=0;
     if (!sendCmd(command))
-        return;d
+        return;
     return;
 }
 
@@ -542,7 +555,6 @@ void Client::hear(char *msg)
 
     if(strstr(msg,"referee"))
     {
-        havingCatch=false;
         if(hearmsg=strstr(msg,"play_on"))
         {
 
